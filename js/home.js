@@ -17,56 +17,56 @@ const roleIcons = {
 };
 
 // 프로젝트 예시 데이터
-const projects = [
-  {
-    name: "AI 기반 피트니스 코칭 앱",
-    desc: "사용자의 운동 동작을 분석하고 실시간으로 피드백을 제공하는 AI 코칭 서비스",
-    roles: ["기획자", "개발자", "디자이너"],
-    category: "스타트업",
-    image: "https://images.unsplash.com/photo-1593079831268-3381b0db4a77?q=80&w=600&h=400",
-    contact: "010-1234-5678"
-  },
-  {
-    name: "친환경 배송 플랫폼",
-    desc: "지역 기반 공동 배송을 통해 탄소 배출을 줄이는 친환경 물류 서비스",
-    roles: ["기획자", "개발자", "마케터"],
-    category: "프로젝트",
-    image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=600&h=400",
-    contact: "010-2345-6789"
-  },
-  {
-    name: "실시간 언어 학습 커뮤니티",
-    desc: "전 세계 사람들과 실시간으로 대화하며 언어를 배울 수 있는 글로벌 플랫폼",
-    roles: ["기획자", "디자이너", "마케터", "개발자"],
-    category: "공모전",
-    image: "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?q=80&w=600&h=400",
-    contact: "010-3456-7890"
-  },
-  {
-    name: "창작자 마켓플레이스",
-    desc: "디지털 창작자들이 자신의 작품을 NFT로 판매하고 거래할 수 있는 통합 플랫폼",
-    roles: ["디자이너", "개발자", "마케터", "기획자"],
-    category: "스타트업",
-    image: "https://images.unsplash.com/photo-1622547748225-3fc4abd2cca0?q=80&w=600&h=400",
-    contact: "010-4567-8901"
-  },
-  {
-    name: "스마트 농업 솔루션",
-    desc: "IoT 기술을 활용한 스마트 농업 시스템으로 작물 관리를 자동화하고 생산성을 향상시키는 서비스",
-    roles: ["개발자", "기획자", "마케터"],
-    category: "기타",
-    image: "https://images.pexels.com/photos/1108572/pexels-photo-1108572.jpeg?auto=compress&cs=tinysrgb&w=600&h=400",
-    contact: "010-5678-9012"
-  },
-  {
-    name: "메타버스 교육 플랫폼",
-    desc: "가상 현실을 활용한 몰입형 교육 경험을 제공하는 메타버스 기반 교육 플랫폼",
-    roles: ["디자이너", "개발자", "기획자"],
-    category: "공모전",
-    image: "https://images.unsplash.com/photo-1629429407756-446d66f5b24e?q=80&w=600&h=400",
-    contact: "010-6789-0123"
-  }
-];
+// const projects = [
+//   {
+//     name: "AI 기반 피트니스 코칭 앱",
+//     desc: "사용자의 운동 동작을 분석하고 실시간으로 피드백을 제공하는 AI 코칭 서비스",
+//     roles: ["기획자", "개발자", "디자이너"],
+//     category: "스타트업",
+//     image: "https://images.unsplash.com/photo-1593079831268-3381b0db4a77?q=80&w=600&h=400",
+//     contact: "010-1234-5678"
+//   },
+//   {
+//     name: "친환경 배송 플랫폼",
+//     desc: "지역 기반 공동 배송을 통해 탄소 배출을 줄이는 친환경 물류 서비스",
+//     roles: ["기획자", "개발자", "마케터"],
+//     category: "프로젝트",
+//     image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=600&h=400",
+//     contact: "010-2345-6789"
+//   },
+//   {
+//     name: "실시간 언어 학습 커뮤니티",
+//     desc: "전 세계 사람들과 실시간으로 대화하며 언어를 배울 수 있는 글로벌 플랫폼",
+//     roles: ["기획자", "디자이너", "마케터", "개발자"],
+//     category: "공모전",
+//     image: "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?q=80&w=600&h=400",
+//     contact: "010-3456-7890"
+//   },
+//   {
+//     name: "창작자 마켓플레이스",
+//     desc: "디지털 창작자들이 자신의 작품을 NFT로 판매하고 거래할 수 있는 통합 플랫폼",
+//     roles: ["디자이너", "개발자", "마케터", "기획자"],
+//     category: "스타트업",
+//     image: "https://images.unsplash.com/photo-1622547748225-3fc4abd2cca0?q=80&w=600&h=400",
+//     contact: "010-4567-8901"
+//   },
+//   {
+//     name: "스마트 농업 솔루션",
+//     desc: "IoT 기술을 활용한 스마트 농업 시스템으로 작물 관리를 자동화하고 생산성을 향상시키는 서비스",
+//     roles: ["개발자", "기획자", "마케터"],
+//     category: "기타",
+//     image: "https://images.pexels.com/photos/1108572/pexels-photo-1108572.jpeg?auto=compress&cs=tinysrgb&w=600&h=400",
+//     contact: "010-5678-9012"
+//   },
+//   {
+//     name: "메타버스 교육 플랫폼",
+//     desc: "가상 현실을 활용한 몰입형 교육 경험을 제공하는 메타버스 기반 교육 플랫폼",
+//     roles: ["디자이너", "개발자", "기획자"],
+//     category: "공모전",
+//     image: "https://images.unsplash.com/photo-1629429407756-446d66f5b24e?q=80&w=600&h=400",
+//     contact: "010-6789-0123"
+//   }
+// ];
 
 // 팀원 예시 데이터
 const members = {
@@ -302,15 +302,21 @@ function createStars() {
 }
 
 // 메인 선택지 → 프로젝트
-findProjectsBtn.onclick = () => {
+findProjectsBtn.onclick = async () => {
   document.querySelector('.choice').classList.add('hidden');
   projectsSection.classList.remove('hidden');
-  
-  // 프로젝트 카테고리 탭 추가
-  addProjectCategoryTabs();
-  
-  renderProjects("전체");
-  
+
+  // Supabase에서 프로젝트 목록 불러오기
+  let { data: projects, error } = await supabase
+    .from('projects')
+    .select('*')
+    .order('created_at', { ascending: false });
+
+  // 프로젝트 카테고리 탭 추가 (불러온 데이터 기반)
+  addProjectCategoryTabs(projects);
+
+  renderProjects("전체", projects);
+
   // 애니메이션 효과
   setTimeout(() => {
     projectsSection.classList.add('fade-in');
@@ -362,29 +368,29 @@ backBtns.forEach(btn => {
 });
 
 // 프로젝트 카테고리 탭 추가
-function addProjectCategoryTabs() {
+function addProjectCategoryTabs(projects) {
   // 이미 탭이 존재하는지 확인
   if (projectsSection.querySelector('.project-category-tabs')) {
     return;
   }
-  
+
   // 검색바 제거
   const searchBar = projectsSection.querySelector('.search-bar');
   if (searchBar) {
     searchBar.remove();
   }
-  
+
   // 카테고리 목록 (중복 없이)
-  const categories = ["전체", ...new Set(projects.map(proj => proj.category))];
-  
+  const categories = ["전체", ...new Set((projects || []).map(proj => proj.category))];
+
   // 카테고리 탭 컨테이너 생성
   const tabsContainer = document.createElement('div');
   tabsContainer.className = 'project-category-tabs role-tabs';
-  
+
   // 탭 버튼 래퍼 생성
   const tabsWrapper = document.createElement('div');
   tabsWrapper.className = 'tabs-wrapper';
-  
+
   // 등록하기 버튼 생성
   const registerButton = document.createElement('button');
   registerButton.className = 'register-button project-register-button';
@@ -392,13 +398,12 @@ function addProjectCategoryTabs() {
   registerButton.addEventListener('click', () => {
     // 먼저 즉시 페이지 상단으로 스크롤
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    
     // 약간의 지연 후 폼 표시
     setTimeout(() => {
       showProjectForm();
     }, 100);
   });
-  
+
   categories.forEach(category => {
     const tab = document.createElement('button');
     tab.className = 'role-tab project-category-tab';
@@ -407,41 +412,47 @@ function addProjectCategoryTabs() {
     }
     tab.setAttribute('data-category', category);
     tab.textContent = category;
-    
-    tab.addEventListener('click', () => {
+
+    tab.addEventListener('click', async () => {
       // 활성 탭 변경
       document.querySelectorAll('.project-category-tab').forEach(t => t.classList.remove('active'));
       tab.classList.add('active');
-      
-      // 선택한 카테고리로 필터링
-      renderProjects(category);
+      // Supabase에서 다시 불러와서 필터링
+      let { data: projects, error } = await supabase
+        .from('projects')
+        .select('*')
+        .order('created_at', { ascending: false });
+      renderProjects(category, projects);
     });
-    
+
     tabsWrapper.appendChild(tab);
   });
-  
+
   // 탭 버튼들과 등록하기 버튼을 컨테이너에 추가
   tabsContainer.appendChild(tabsWrapper);
   tabsContainer.appendChild(registerButton);
-  
+
   // 섹션에 탭 추가
   const sectionHeader = projectsSection.querySelector('.section-header');
   sectionHeader.insertAdjacentElement('afterend', tabsContainer);
 }
 
 // 프로젝트 리스트 렌더링
-async function renderProjects(category = "전체") {
+async function renderProjects(category = "전체", projectsParam = null) {
   projectList.innerHTML = '';
 
-  // Supabase에서 프로젝트 목록 불러오기
-  let { data: projects, error } = await supabase
-    .from('projects')
-    .select('*')
-    .order('created_at', { ascending: false });
-
-  if (error) {
-    projectList.innerHTML = '<div>프로젝트 목록을 불러오지 못했습니다.</div>';
-    return;
+  // Supabase에서 프로젝트 목록 불러오기 (projectsParam이 없으면)
+  let projects = projectsParam;
+  if (!projects) {
+    let { data, error } = await supabase
+      .from('projects')
+      .select('*')
+      .order('created_at', { ascending: false });
+    if (error) {
+      projectList.innerHTML = '<div>프로젝트 목록을 불러오지 못했습니다.</div>';
+      return;
+    }
+    projects = data;
   }
 
   // 카테고리 필터링
@@ -454,10 +465,10 @@ async function renderProjects(category = "전체") {
     card.className = 'project-card';
     card.innerHTML = `
       <div class="project-image">
-        <img src="${proj.image || ''}" alt="${proj.title}" onerror="this.src='https://via.placeholder.com/600x400/dddddd/999999?text=${encodeURIComponent(proj.title)}'">
+        <img src="${proj.image || ''}" alt="${proj.title || '프로젝트'}" onerror="this.src='https://via.placeholder.com/600x400/dddddd/999999?text=${encodeURIComponent(proj.title || '프로젝트')}'">
       </div>
       <div class="project-header">
-        <span class="project-title">${proj.title}</span>
+        <span class="project-title">${proj.title || ''}</span>
         <span class="project-category">${proj.category || ''}</span>
       </div>
       <p class="project-desc">${proj.description || ''}</p>
