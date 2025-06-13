@@ -1109,21 +1109,13 @@ async function finishProjectRegistration(name, desc, selectedRoles, category, co
     .from('projects')
     .insert([{
       title: name,
-      description: desc,
-      roles: JSON.stringify(selectedRoles),
-      category: category,
-      contact: contact,
-      image: imageData,
-      status: 'planning',
-      created_at: new Date().toISOString(),
-      updated_at: new Date().toISOString()
+      status: 'planning'
     }]);
-
   if (error) {
+    console.error(error); // 전체 에러 객체 출력
     alert('프로젝트 등록 실패: ' + error.message);
     return;
   }
-
   alert('프로젝트가 성공적으로 등록되었습니다!');
   // 폼 초기화 및 UI 갱신 코드 (기존 코드 유지)
   projectForm.reset();
