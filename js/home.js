@@ -1105,13 +1105,12 @@ projectForm.addEventListener('submit', function(e) {
 
 // 프로젝트 등록 완료 함수
 async function finishProjectRegistration(name, desc, selectedRoles, category, contact, imageData) {
-  // Supabase에 저장
   const { data, error } = await supabase
     .from('projects')
     .insert([{
       title: name,
       description: desc,
-      roles: JSON.stringify(selectedRoles), // roles 컬럼이 배열이 아니면 문자열로 저장
+      roles: JSON.stringify(selectedRoles),
       category: category,
       contact: contact,
       image: imageData,
@@ -1126,7 +1125,6 @@ async function finishProjectRegistration(name, desc, selectedRoles, category, co
   }
 
   alert('프로젝트가 성공적으로 등록되었습니다!');
-
   // 폼 초기화 및 UI 갱신 코드 (기존 코드 유지)
   projectForm.reset();
   otherRoleContainer.classList.add('hidden');
