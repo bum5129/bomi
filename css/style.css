@@ -1,0 +1,1639 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+
+:root {
+  --main-blue: #0066cc;
+  --main-blue-dark: #004e9e;
+  --main-blue-darker: #003a75;
+  --main-blue-light: #e1f0ff;
+  --accent-blue: #00b8ff;
+  --accent-purple: #6c5ce7;
+  --accent-pink: #ff9ff3;
+  --purple-gradient-light: #a239ca;
+  --purple-gradient-dark: #5b1fa6;
+  --text-light: #f5f6fa;
+  --text-dark: #2d3436;
+  --bg-light: #ffffff;
+  --bg-gray: #f8f9fa;
+  --border-radius: 14px;
+  --box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  --transition: all 0.3s ease;
+  --main-font: 'Noto Sans KR', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--main-font);
+  color: var(--text-dark);
+  background: var(--bg-light);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+}
+
+html {
+  overflow-y: scroll;
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-gray);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--main-blue-dark);
+  border-radius: 4px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 1.5rem auto 0;
+  background: var(--bg-light);
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  width: 100%;
+  padding: 0 20px;
+}
+
+header {
+  background: linear-gradient(135deg, var(--main-blue), var(--main-blue-dark));
+  padding: 3rem 0;
+  margin-bottom: 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  position: relative;
+  width: 100%;
+}
+
+header::before {
+  display: none;
+}
+
+header::after {
+  display: none;
+}
+
+.header-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
+  min-height: 100px;
+}
+
+.logo {
+  position: absolute;
+  left: 25px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  z-index: 10;
+}
+
+.logo-img {
+  height: auto;
+  width: 180px;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.2));
+}
+
+h1 {
+  color: white;
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tagline-container {
+  max-width: 800px;
+  text-align: center;
+  margin-top: 0;
+}
+
+.tagline {
+  font-size: 1.6rem;
+  color: white;
+  margin: 0;
+  font-weight: 500;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tag-accent {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  letter-spacing: -0.5px;
+  color: #ffffff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.highlight {
+  background: rgba(222, 87, 255, 0.6);
+  padding: 3px 12px;
+  border-radius: 20px;
+  color: white;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: inline-block;
+}
+
+.main-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 3rem 0 4rem;
+  width: 100%;
+  max-width: 800px;
+}
+
+.main-btn {
+  background: white;
+  border: 1px solid transparent;
+  border-radius: var(--border-radius);
+  flex: 1;
+  max-width: 400px;
+  padding: 25px;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  color: var(--text-dark);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  position: relative;
+  overflow: hidden;
+}
+
+#find-projects {
+  border-color: var(--purple-gradient-light);
+}
+
+#find-members {
+  border-color: var(--main-blue);
+}
+
+.main-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  transition: all 0.4s ease-out;
+  z-index: 0;
+  opacity: 0;
+}
+
+/* 첫 번째 버튼(프로젝트 찾기) */
+#find-projects::after {
+  background: linear-gradient(135deg, var(--purple-gradient-light), var(--purple-gradient-dark));
+}
+
+/* 두 번째 버튼(팀원 찾기) */
+#find-members::after {
+  background: linear-gradient(to right, var(--main-blue) 0%, var(--main-blue-dark) 50%, var(--main-blue-darker) 100%);
+}
+
+.main-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  color: white;
+}
+
+.main-btn:hover::after {
+  width: 100%;
+  opacity: 1;
+}
+
+.main-btn:hover .btn-text small {
+  opacity: 1;
+}
+
+/* 버튼 아이콘 호버 효과 */
+#find-projects:hover .btn-icon {
+  background: white;
+  color: var(--purple-gradient-dark);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+}
+
+#find-members:hover .btn-icon {
+  background: white;
+  color: var(--main-blue-dark);
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.2);
+}
+
+/* 버튼 아이콘 스타일 조정 */
+#find-projects .btn-icon {
+  background: var(--purple-gradient-light);
+  box-shadow: 0 4px 10px rgba(162, 57, 202, 0.25);
+}
+
+#find-members .btn-icon {
+  background: linear-gradient(135deg, var(--main-blue) 0%, var(--main-blue-darker) 100%);
+  box-shadow: 0 4px 10px rgba(0, 102, 204, 0.25);
+}
+
+.btn-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  margin-right: 20px;
+  color: white;
+  transition: var(--transition);
+  z-index: 1;
+  position: relative;
+}
+
+.btn-text {
+  text-align: left;
+  line-height: 1.4;
+  position: relative;
+  z-index: 1;
+}
+
+.btn-text span {
+  display: block;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.btn-text small {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+section {
+  margin: 20px 0;
+  background: var(--bg-light);
+  border-radius: var(--border-radius);
+  padding: 30px;
+  box-shadow: none;
+  border: none;
+  width: 100%;
+  max-width: 1200px;
+  box-sizing: border-box;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.section-header h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--purple-gradient-light);
+  margin-bottom: 5px;
+}
+
+/* 팀원 찾기 및 팀원 등록 관련 섹션 제목은 푸른색으로 */
+#members-section .section-header h2,
+#register-member-section .section-header h2 {
+  color: var(--main-blue);
+}
+
+.section-header p {
+  color: var(--text-dark);
+  opacity: 0.7;
+  font-size: 1.1rem;
+}
+
+.search-bar {
+  background: var(--bg-gray);
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  margin-bottom: 25px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.search-bar i {
+  color: var(--main-blue);
+  font-size: 1.2rem;
+  margin-right: 10px;
+}
+
+.search-bar input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: 8px 0;
+  font-size: 1rem;
+  outline: none;
+}
+
+.role-tabs {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  width: 100%;
+  position: relative;
+}
+
+.tabs-wrapper {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.role-tab {
+  background: var(--bg-gray);
+  border: none;
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: var(--transition);
+  color: var(--text-dark);
+}
+
+.role-tab.active, .role-tab:hover {
+  background: linear-gradient(135deg, var(--main-blue), var(--main-blue-dark));
+  color: white;
+}
+
+.hidden {
+  display: none;
+}
+
+.project-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin-top: 30px;
+  width: 100%;
+}
+
+.member-categories {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 30px;
+  width: 100%;
+}
+
+.project-card {
+  background: var(--bg-light);
+  border-radius: var(--border-radius);
+  padding: 25px;
+  box-shadow: var(--box-shadow);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--purple-gradient-light);
+}
+
+.member-card {
+  background: var(--bg-light);
+  border-radius: var(--border-radius);
+  padding: 25px;
+  box-shadow: var(--box-shadow);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--main-blue);
+  cursor: pointer;
+}
+
+.member-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  border-color: var(--main-blue-dark);
+}
+
+.project-title, .member-name {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: var(--purple-gradient-light);
+}
+
+/* 팀원 이름은 푸른색으로 */
+.member-name {
+  color: var(--main-blue);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+
+.project-desc, .member-intro {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  color: var(--text-dark);
+  opacity: 0.8;
+}
+
+.role-icons {
+  display: flex;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.role-icon {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.role-icon:nth-child(1) { background: var(--purple-gradient-light); }
+.role-icon:nth-child(2) { background: var(--purple-gradient-dark); }
+.role-icon:nth-child(3) { background: #b84dd1; }
+.role-icon:nth-child(4) { background: #9129af; }
+
+.role-icon:hover {
+  transform: scale(1.1);
+}
+
+.member-category {
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.member-category h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--main-blue);
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid var(--main-blue-light);
+  padding-bottom: 8px;
+  margin-bottom: 15px;
+}
+
+.member-category h3 .role-icon {
+  margin-left: 10px;
+}
+
+.member-category h3 svg {
+  margin-right: 10px;
+  width: 24px;
+  height: 24px;
+}
+
+.profile-btn {
+  background: linear-gradient(135deg, var(--main-blue), var(--main-blue-dark));
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.profile-btn:hover {
+  background: var(--main-blue-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 78, 158, 0.3);
+}
+
+.back-btn {
+  background: var(--bg-light);
+  border: 1px solid var(--main-blue);
+  color: var(--main-blue);
+  border-radius: 30px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: var(--transition);
+  display: block;
+  margin: 30px auto 10px;
+}
+
+.back-btn:hover {
+  background: linear-gradient(135deg, var(--purple-gradient-light), var(--purple-gradient-dark));
+  color: white;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+  box-sizing: border-box;
+}
+
+.modal.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content {
+  background: var(--bg-light);
+  border-radius: var(--border-radius);
+  padding: 30px;
+  width: 90%;
+  max-width: 600px;
+  transform: translateY(20px);
+  transition: var(--transition);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.modal.visible .modal-content {
+  transform: translateY(0);
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: var(--text-dark);
+  opacity: 0.7;
+  transition: var(--transition);
+}
+
+.close-btn:hover {
+  opacity: 1;
+  color: #e74c3c;
+}
+
+#profile-details {
+  padding: 10px;
+}
+
+#profile-details h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--main-blue);
+  margin-bottom: 20px;
+}
+
+#profile-details .portfolio-preview {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 15px;
+  margin: 20px 0;
+}
+
+#profile-details .portfolio-preview img {
+  width: 100%;
+  border-radius: var(--border-radius);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+#profile-details a {
+  background: linear-gradient(135deg, var(--main-blue), var(--main-blue-dark));
+  color: white;
+  padding: 10px 20px;
+  border-radius: 30px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--transition);
+  margin-top: 15px;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+#profile-details a:hover {
+  background: var(--main-blue-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 78, 158, 0.3);
+}
+
+/* 프로필 아바타 스타일 */
+.profile-avatar {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, var(--main-blue), var(--main-blue-dark));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+  color: white;
+  font-size: 2rem;
+}
+
+.profile-role {
+  display: inline-block;
+  background: var(--main-blue-light);
+  color: var(--main-blue-dark);
+  padding: 3px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+footer {
+  text-align: center;
+  padding: 30px 0;
+  color: white;
+  background: linear-gradient(135deg, var(--main-blue-dark), var(--main-blue));
+  font-size: 0.9rem;
+  margin-top: 50px;
+  box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.05);
+  position: relative;
+  width: 100%;
+}
+
+footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
+}
+
+footer p {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Animation keyframes */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Responsive styles */
+@media (max-width: 900px) {
+  .container {
+    margin: 2rem auto 0;
+  }
+  
+  h1 {
+    font-size: 1.6rem;
+  }
+  
+  .tagline {
+    font-size: 1.4rem;
+  }
+  
+  .tag-accent {
+    font-size: 1.9rem;
+  }
+  
+  .logo-img {
+    width: 150px;
+  }
+  
+  header {
+    padding: 2.5rem 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    margin: 1.5rem auto 0;
+  }
+  
+  .header-content {
+    padding: 0 15px;
+  }
+  
+  .tagline {
+    font-size: 1.3rem;
+  }
+  
+  .tag-accent {
+    font-size: 1.7rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .logo {
+    left: 20px;
+  }
+  
+  .logo-img {
+    width: 130px;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+    gap: 15px;
+    margin: 3rem 0 3rem;
+  }
+  
+  .main-btn {
+    max-width: 100%;
+  }
+  
+  .project-list {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-content {
+    padding: 0 15px;
+  }
+  
+  header {
+    padding: 2.2rem 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .header-content {
+    padding: 0 15px;
+  }
+  
+  .tagline {
+    font-size: 1.1rem;
+    margin-top: 15px;
+  }
+  
+  .tag-accent {
+    font-size: 1.5rem;
+    margin-bottom: 0.6rem;
+  }
+  
+  header {
+    padding: 2rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    margin: 1rem auto 0;
+    padding: 0 15px;
+  }
+  
+  .tagline {
+    font-size: 1rem;
+  }
+  
+  .tag-accent {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  header {
+    padding: 1.8rem 0;
+  }
+  
+  .logo {
+    left: 15px;
+  }
+  
+  .logo-img {
+    width: 100px;
+  }
+  
+  .main-content {
+    padding: 10px 0;
+  }
+  
+  .role-tabs {
+    overflow-x: auto;
+    padding-bottom: 10px;
+    justify-content: flex-start;
+  }
+  
+  .section-header h2 {
+    font-size: 1.6rem;
+  }
+}
+
+/* 불필요한 마우스 오버 효과 제거 */
+.logo a {
+  display: block;
+}
+
+/* 팀원 리스트 레이아웃 변경 */
+.member-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 15px;
+}
+
+/* 팀원 카테고리 스타일 변경 */
+.member-category h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--main-blue);
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid var(--main-blue-light);
+  padding-bottom: 8px;
+}
+
+/* 팀원 관련 색상 변경 */
+.role-tab.active, .role-tab:hover {
+  background: linear-gradient(135deg, var(--main-blue), var(--main-blue-dark));
+  color: white;
+}
+
+/* 프로필 모달 스타일 수정 */
+.profile-skills {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.profile-skills h4 {
+  margin-bottom: 10px;
+}
+
+.skill-tags.large {
+  justify-content: center;
+}
+
+#profile-details a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 15px auto 0;
+  width: fit-content;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  border-color: var(--purple-gradient-dark);
+}
+
+.project-category {
+  font-size: 0.8rem;
+  background: rgba(52, 152, 219, 0.1);
+  color: var(--main-blue);
+  padding: 3px 10px;
+  border-radius: 12px;
+  display: inline-block;
+}
+
+/* 스킬 태그 스타일 - 프로젝트 카테고리와 유사하게 */
+.skill-tag {
+  display: inline-block;
+  background: rgba(52, 152, 219, 0.1);
+  color: var(--main-blue);
+  padding: 5px 12px;
+  border-radius: 12px;
+  margin-right: 4px;
+  margin-bottom: 6px;
+  font-size: 0.8rem;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+
+.skill-tags.large .skill-tag {
+  font-size: 0.9rem;
+  padding: 5px 15px;
+}
+
+/* 반응형 조정 */
+@media (max-width: 992px) {
+  .member-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .member-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 등록 폼 스타일 */
+.register-form {
+  background-color: white;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--main-blue-dark);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #e1e1e1;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: border-color 0.3s;
+  font-family: var(--main-font);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--main-blue);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+.checkbox-group input[type="checkbox"] {
+  width: auto;
+  margin-right: 8px;
+}
+
+.form-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: flex-end;
+  margin-top: 25px;
+}
+
+.cancel-btn, .submit-btn {
+  padding: 12px 25px;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.cancel-btn {
+  background-color: #f1f1f1;
+  color: #555;
+  border: none;
+}
+
+.cancel-btn:hover {
+  background-color: #e5e5e5;
+}
+
+.submit-btn {
+  background-color: var(--main-blue);
+  color: white;
+  border: none;
+  box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3);
+}
+
+.submit-btn:hover {
+  background-color: var(--main-blue-dark);
+  transform: translateY(-2px);
+}
+
+/* 뒤로가기 버튼 스타일 수정 */
+.back-btn {
+  background-color: var(--main-blue);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 25px;
+  font-size: 1rem;
+  margin-top: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s;
+  box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3);
+}
+
+.back-btn:hover {
+  background: linear-gradient(135deg, var(--purple-gradient-light), var(--purple-gradient-dark));
+  transform: translateY(-2px);
+}
+
+/* 프로필 모달 내부의 텍스트도 동일한 폰트 적용 */
+.profile-intro, 
+.profile-education p, 
+#profile-details p,
+.project-full-desc, 
+.member-intro,
+.project-desc {
+  font-family: var(--main-font);
+  line-height: 1.6;
+}
+
+/* 등록 폼의 글씨체 통일 */
+.register-form,
+.register-form input,
+.register-form textarea,
+.register-form select,
+.register-form button,
+.register-form label {
+  font-family: var(--main-font);
+}
+
+/* 버튼 글씨체 통일 */
+button, 
+.main-btn, 
+.back-btn, 
+.submit-btn, 
+.cancel-btn, 
+.profile-btn {
+  font-family: var(--main-font);
+}
+
+/* 등록하기 버튼 색상 변경 */
+#register-project-btn {
+  background-color: var(--purple-gradient-light);
+  color: white;
+  border: none;
+}
+
+#register-project-btn:hover {
+  background: linear-gradient(135deg, var(--main-blue), var(--main-blue-dark));
+}
+
+#register-member-btn {
+  background-color: var(--main-blue);
+  color: white;
+  border: none;
+}
+
+#register-member-btn:hover {
+  background: linear-gradient(135deg, var(--purple-gradient-light), var(--purple-gradient-dark));
+}
+
+/* 프로젝트 등록 폼 버튼 색상 변경 */
+#register-project-section .submit-btn {
+  background-color: var(--purple-gradient-light);
+  box-shadow: 0 4px 10px rgba(162, 57, 202, 0.3);
+}
+
+#register-project-section .submit-btn:hover {
+  background-color: var(--purple-gradient-dark);
+}
+
+/* 팀원 등록 폼 버튼 색상 변경 */
+#register-member-section .submit-btn {
+  background-color: var(--main-blue);
+  box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3);
+}
+
+#register-member-section .submit-btn:hover {
+  background-color: var(--main-blue-dark);
+}
+
+/* 필수 입력 표시 스타일 */
+.required {
+  color: #e74c3c;
+  margin-left: 3px;
+  font-weight: bold;
+}
+
+/* 기타 역할 입력 컨테이너 */
+#other-role-container {
+  margin-top: 10px;
+  transition: all 0.3s ease;
+}
+
+#other-role-container.hidden {
+  display: none;
+}
+
+#other-role-input {
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 0.95rem;
+  margin-top: 5px;
+}
+
+/* 체크박스 스타일 강화 */
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 8px;
+}
+
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  padding: 5px 0;
+}
+
+/* 프로젝트 카드 이미지 컨테이너 */
+.project-image {
+  height: 180px;
+  overflow: hidden;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  margin: -25px -25px 15px -25px;
+}
+
+/* 프로젝트 카드 이미지 */
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+/* 이미지 호버 효과 */
+.project-card:hover .project-image img {
+  transform: scale(1.05);
+}
+
+/* 프로젝트 상세 이미지 */
+.project-detail-image {
+  width: 100%;
+  max-height: 250px;
+  object-fit: cover;
+  border-radius: var(--border-radius);
+  margin-bottom: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* 프로젝트 카테고리 탭 */
+.project-category-tabs {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  width: 100%;
+  position: relative;
+}
+
+/* 반응형 레이아웃 */
+@media (max-width: 992px) {
+  .project-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .project-list {
+    grid-template-columns: 1fr;
+  }
+  
+  .member-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 프로젝트 카테고리 탭 스타일 */
+.project-category-tabs .role-tab {
+  background: var(--bg-gray);
+  border: none;
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: var(--transition);
+  color: var(--text-dark);
+}
+
+.project-category-tabs .role-tab:hover {
+  background-color: #d1c4e9;
+  color: #6a1b9a;
+}
+
+.project-category-tabs .role-tab.active {
+  background-color: #6a1b9a;
+  color: white;
+  box-shadow: 0 3px 8px rgba(106, 27, 154, 0.3);
+}
+
+/* 프로젝트 카테고리 탭 */
+.project-category-tabs {
+  margin-bottom: 20px;
+}
+
+/* 등록하기 버튼 스타일 */
+.register-button {
+  background: var(--main-blue);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 3px 10px rgba(52, 152, 219, 0.3);
+  margin-left: auto;
+}
+
+.register-button:hover {
+  background: var(--main-blue-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+}
+
+/* 프로젝트 등록하기 버튼 스타일 - 자주색 */
+.project-register-button {
+  background: linear-gradient(135deg, var(--purple-gradient-light), var(--purple-gradient-dark));
+  color: white;
+  box-shadow: 0 3px 10px rgba(106, 27, 154, 0.3);
+}
+
+.project-register-button:hover {
+  background: var(--purple-gradient-dark);
+  box-shadow: 0 5px 15px rgba(106, 27, 154, 0.4);
+  transform: translateY(-3px);
+}
+
+/* 하단 등록 버튼 공통 스타일 */
+.apply-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--main-blue);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: var(--transition);
+  box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+  width: 100%;
+  max-width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.apply-btn:hover {
+  background: var(--main-blue-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
+}
+
+.apply-btn::before {
+  content: '\f4ad';
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  font-size: 1.1rem;
+}
+
+/* 목록 버튼 공통 스타일 */
+.list-btn {
+  padding: 12px 25px;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+  background-color: #f8f9fa;
+  color: #555;
+  border: 1px solid #e5e5e5;
+}
+
+.list-btn:hover {
+  background-color: #e9ecef;
+}
+
+/* 프로젝트 등록 페이지의 목록 버튼 */
+#register-project-section .list-btn {
+  border-color: #d1c4e9;
+  color: #6a1b9a;
+}
+
+#register-project-section .list-btn:hover {
+  background-color: #ede7f6;
+}
+
+/* 팀원 등록 페이지의 목록 버튼 */
+#register-member-section .list-btn {
+  border-color: #bbdefb;
+  color: var(--main-blue);
+}
+
+#register-member-section .list-btn:hover {
+  background-color: #e3f2fd;
+}
+
+/* 프로필 모달 대학 정보 스타일 */
+.profile-university {
+  font-size: 0.95rem;
+  color: #666;
+  margin: 0 0 10px 0;
+  text-align: center;
+}
+
+/* 팀원 교육 정보 스타일 */
+.member-education {
+  font-size: 0.85rem;
+  font-weight: normal;
+  color: #666;
+  margin-left: 6px;
+}
+
+/* 프로젝트 연락처 섹션 */
+.project-contact {
+  margin: 20px 0;
+  padding: 12px 15px;
+  background: rgba(52, 152, 219, 0.05);
+  border-radius: 8px;
+  border-left: 4px solid var(--main-blue);
+}
+
+.project-contact p {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  color: #555;
+}
+
+.project-contact strong {
+  margin-right: 8px;
+  color: var(--main-blue-dark);
+}
+
+/* 연락처 번호 스타일 */
+.contact-number {
+  font-weight: 600;
+  color: #444;
+  letter-spacing: 0.5px;
+}
+
+/* 필요한 역할에서 기타 역할 아이콘 스타일 */
+.role-badge .fa-user-tag {
+  color: #8e44ad;
+}
+
+/* 프로필 버튼 컨테이너 */
+.profile-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+/* 포트폴리오 링크 버튼 */
+.portfolio-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(135deg, var(--main-blue), var(--main-blue-dark));
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 10px 25px;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: var(--transition);
+  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+  width: 100%;
+  max-width: 250px;
+}
+
+.portfolio-link:hover {
+  background: var(--main-blue-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(52, 152, 219, 0.4);
+}
+
+/* 프로필 교육 정보 스타일 */
+.profile-university {
+  font-size: 0.95rem;
+  color: #666;
+  margin: 0 0 10px 0;
+  text-align: center;
+}
+
+/* 추가 */
+.form-hint {
+  display: block;
+  color: #666;
+  font-size: 0.8rem;
+  margin-top: 5px;
+  font-style: italic;
+}
+
+/* 파일 업로드 스타일 */
+.file-upload-container {
+  position: relative;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.file-upload-input {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.file-upload-label {
+  display: flex;
+  align-items: center;
+  padding: 12px 15px;
+  background-color: #f8f9fa;
+  border: 1px dashed #ccc;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: #555;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.file-upload-label:hover {
+  background-color: #e9ecef;
+  border-color: #aaa;
+}
+
+.file-upload-label i {
+  font-size: 1.2rem;
+  margin-right: 10px;
+  color: var(--main-blue);
+}
+
+.file-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 이미지 미리보기 컨테이너 */
+#image-preview-container {
+  position: relative;
+  margin-top: 15px;
+  width: 100%;
+  max-width: 300px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+#image-preview-container.hidden {
+  display: none;
+}
+
+#image-preview {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.remove-image-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 28px;
+  height: 28px;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.remove-image-btn:hover {
+  background: rgba(231, 76, 60, 0.8);
+  transform: scale(1.1);
+}
+
+/* 프로젝트 등록 폼의 라벨은 자주색으로 */
+#register-project-section .form-group label {
+  color: var(--purple-gradient-light);
+}
+
+/* 프로젝트 등록 폼의 입력 필드 포커스 효과는 자주색으로 */
+#register-project-section .form-group input:focus,
+#register-project-section .form-group select:focus,
+#register-project-section .form-group textarea:focus {
+  border-color: var(--purple-gradient-light);
+  box-shadow: 0 0 0 2px rgba(162, 57, 202, 0.2);
+}
+
+/* 프로젝트 등록 페이지의 파일 업로드 아이콘은 자주색으로 */
+#register-project-section .file-upload-label i {
+  color: var(--purple-gradient-light);
+}
+
+/* 프로젝트 연락처 섹션 */
+.project-contact {
+  margin: 20px 0;
+  padding: 12px 15px;
+  background: rgba(52, 152, 219, 0.05);
+  border-radius: 8px;
+  border-left: 4px solid var(--main-blue);
+}
+
+/* 프로젝트 등록 페이지의 연락처 섹션 */
+#register-project-section .project-contact {
+  background: rgba(162, 57, 202, 0.05);
+  border-left: 4px solid var(--purple-gradient-light);
+}
+
+.project-contact strong {
+  margin-right: 8px;
+  color: var(--main-blue-dark);
+}
+
+/* 프로젝트 등록 페이지의 연락처 강조 텍스트 */
+#register-project-section .project-contact strong {
+  color: var(--purple-gradient-dark);
+}
+
+/* 프로젝트 등록하기 버튼 오버라이드 스타일 */
+.apply-btn.project-register-button {
+  background: linear-gradient(135deg, var(--purple-gradient-light), var(--purple-gradient-dark));
+  box-shadow: 0 5px 15px rgba(106, 27, 154, 0.3);
+}
+
+.apply-btn.project-register-button:hover {
+  background: var(--purple-gradient-dark);
+  box-shadow: 0 8px 20px rgba(106, 27, 154, 0.4);
+}
+
+.apply-btn.project-register-button::before {
+  content: '\f067';
+}

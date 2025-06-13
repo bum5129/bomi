@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>팀메이커 - 함께할 인재 찾기</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <div class="logo">
+        <a href="index.html">
+          <img src="images/teammaker_logo.png" alt="팀메이커 로고" class="logo-img">
+        </a>
+      </div>
+      <div class="tagline-container">
+        <div class="tagline">
+          <div class="tag-accent">이제 아이디어만 있으면돼!</div>
+          <div>팀메이커에서 <span class="highlight">함께할 팀원</span>을 찾아보세요</div>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+  <div class="container">
+    <main class="main-content">
+      <div class="action-buttons choice">
+        <button id="find-projects" class="main-btn">
+          <div class="btn-icon"><i class="fas fa-rocket"></i></div>
+          <div class="btn-text">
+            <span>프로젝트 찾기</span>
+            <small>참여 하고싶은 프로젝트를 찾아보세요</small>
+          </div>
+        </button>
+        <button id="find-members" class="main-btn">
+          <div class="btn-icon"><i class="fas fa-user-friends"></i></div>
+          <div class="btn-text">
+            <span>팀원 찾기</span>
+            <small>함께 하고싶은 인재를 찾아보세요</small>
+          </div>
+        </button>
+      </div>
+
+      <section id="projects-section" class="hidden">
+        <div class="section-header">
+          <h2>프로젝트 찾기</h2>
+          <p>당신의 열정을 기다리는 프로젝트들</p>
+        </div>
+        <div class="search-bar">
+          <i class="fas fa-search"></i>
+          <input type="text" placeholder="프로젝트 검색하기">
+        </div>
+        <div class="project-list">
+          <!-- JS에서 프로젝트 예시 삽입 -->
+        </div>
+        <button class="back-btn" id="register-project-btn"><i class="fas fa-plus-circle"></i> 프로젝트 등록하기</button>
+      </section>
+
+      <section id="members-section" class="hidden">
+        <div class="section-header">
+          <h2>팀원 찾기</h2>
+          <p>당신의 프로젝트를 빛낼 인재들</p>
+        </div>
+        <div class="role-tabs">
+          <button class="role-tab active" data-role="전체">전체</button>
+          <button class="role-tab" data-role="기획자">기획자</button>
+          <button class="role-tab" data-role="개발자">개발자</button>
+          <button class="role-tab" data-role="디자이너">디자이너</button>
+          <button class="role-tab" data-role="마케터">마케터</button>
+          <button class="role-tab" data-role="기타">기타</button>
+        </div>
+        <div class="member-categories">
+          <!-- JS에서 팀원 예시 삽입 -->
+        </div>
+        <button class="back-btn" id="register-member-btn"><i class="fas fa-plus-circle"></i> 팀원 등록하기</button>
+      </section>
+
+      <!-- 프로젝트 등록 폼 -->
+      <section id="register-project-section" class="hidden">
+        <div class="section-header">
+          <h2>프로젝트 등록</h2>
+          <p>새로운 프로젝트를 등록하고 팀원을 모집해보세요</p>
+        </div>
+        <form id="project-form" class="register-form">
+          <div class="form-group">
+            <label for="project-name">프로젝트명 <span class="required">*</span></label>
+            <input type="text" id="project-name" placeholder="프로젝트명을 입력하세요" required>
+          </div>
+          <div class="form-group">
+            <label for="project-category">카테고리 <span class="required">*</span></label>
+            <input type="text" id="project-category" placeholder="예: 모바일 앱, 웹 서비스, 교육 서비스 등" required>
+          </div>
+          <div class="form-group">
+            <label for="project-desc">프로젝트 설명 <span class="required">*</span></label>
+            <textarea id="project-desc" placeholder="프로젝트에 대한 간략한 설명을 입력하세요" rows="4" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="project-contact">연락처 <span class="required">*</span></label>
+            <input type="tel" id="project-contact" placeholder="연락 가능한 전화번호를 입력하세요" required>
+          </div>
+          <div class="form-group">
+            <label>필요한 역할 <span class="required">*</span></label>
+            <div class="checkbox-group">
+              <label><input type="checkbox" value="기획자"> 기획자</label>
+              <label><input type="checkbox" value="개발자"> 개발자</label>
+              <label><input type="checkbox" value="디자이너"> 디자이너</label>
+              <label><input type="checkbox" value="마케터"> 마케터</label>
+              <label><input type="checkbox" value="기타" id="other-role-checkbox"> 기타</label>
+            </div>
+            <div id="other-role-container" class="hidden">
+              <input type="text" id="other-role-input" placeholder="필요한 기타 역할을 입력하세요 (콤마로 구분)">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="project-image-file">프로젝트 이미지</label>
+            <div class="file-upload-container">
+              <input type="file" id="project-image-file" accept="image/*" class="file-upload-input">
+              <label for="project-image-file" class="file-upload-label">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <span class="file-name">이미지 파일을 선택하세요</span>
+              </label>
+            </div>
+            <div id="image-preview-container" class="hidden">
+              <img id="image-preview" src="#" alt="이미지 미리보기">
+              <button type="button" id="remove-image" class="remove-image-btn">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+            <small class="form-hint">권장 크기: 600 x 400px (미업로드시 기본 이미지가 적용됩니다)</small>
+          </div>
+          <div class="form-buttons">
+            <button type="button" class="list-btn">목록</button>
+            <button type="button" class="cancel-btn">취소</button>
+            <button type="submit" class="submit-btn">등록하기</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- 팀원 등록 폼 -->
+      <section id="register-member-section" class="hidden">
+        <div class="section-header">
+          <h2>팀원 등록</h2>
+          <p>프로필을 등록하고 프로젝트에 참여해보세요</p>
+        </div>
+        <form id="member-form" class="register-form">
+          <div class="form-group">
+            <label for="member-name">이름 <span class="required">*</span></label>
+            <input type="text" id="member-name" placeholder="이름을 입력하세요" required>
+          </div>
+          <div class="form-group">
+            <label for="member-role">역할 <span class="required">*</span></label>
+            <select id="member-role" required>
+              <option value="" disabled selected>역할을 선택하세요</option>
+              <option value="기획자">기획자</option>
+              <option value="개발자">개발자</option>
+              <option value="디자이너">디자이너</option>
+              <option value="마케터">마케터</option>
+              <option value="기타">기타</option>
+            </select>
+          </div>
+          <div class="form-group" id="member-role-other-container" style="display: none;">
+            <label for="member-role-other">구체적인 역할 <span class="required">*</span></label>
+            <input type="text" id="member-role-other" placeholder="역할을 구체적으로 입력하세요 (예: 자금조달, 회계, 발명 등 자유기재)">
+          </div>
+          <div class="form-group">
+            <label for="member-university">소속 대학 <span class="required">*</span></label>
+            <input type="text" id="member-university" placeholder="소속 대학교명을 입력하세요" required>
+          </div>
+          <div class="form-group">
+            <label for="member-department">소속 학과 <span class="required">*</span></label>
+            <input type="text" id="member-department" placeholder="소속 학과를 입력하세요" required>
+          </div>
+          <div class="form-group">
+            <label for="member-intro">자기소개 <span class="required">*</span></label>
+            <textarea id="member-intro" placeholder="간략한 자기소개를 입력하세요" rows="3" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="member-skills">보유 스킬</label>
+            <input type="text" id="member-skills" placeholder="쉼표(,)로 구분하여 입력 (예: UX 리서치, 데이터 분석)">
+          </div>
+          <div class="form-group">
+            <label for="member-portfolio">포트폴리오 URL</label>
+            <input type="url" id="member-portfolio" placeholder="포트폴리오 URL을 입력하세요">
+          </div>
+          <div class="form-group">
+            <label for="member-image-file">프로필 이미지</label>
+            <div class="file-upload-container">
+              <input type="file" id="member-image-file" accept="image/*" class="file-upload-input">
+              <label for="member-image-file" class="file-upload-label">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <span class="member-file-name">이미지 파일을 선택하세요</span>
+              </label>
+            </div>
+            <div id="member-image-preview-container" class="hidden">
+              <img id="member-image-preview" src="#" alt="이미지 미리보기">
+              <button type="button" id="remove-member-image" class="remove-image-btn">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+            <small class="form-hint">권장 크기: 300 x 300px (미업로드시 기본 이미지가 적용됩니다)</small>
+          </div>
+          <div class="form-buttons">
+            <button type="button" class="list-btn">목록</button>
+            <button type="button" class="cancel-btn">취소</button>
+            <button type="submit" class="submit-btn">등록하기</button>
+          </div>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <!-- 프로필 모달 -->
+  <div id="profile-modal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <div id="profile-details"></div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <p>© 2025 팀메이커 - 당신의 꿈을 함께 이뤄갈 인재들의 공간</p>
+    </div>
+  </footer>
+
+  <script src="js/home.js"></script>
+</body>
+</html>
