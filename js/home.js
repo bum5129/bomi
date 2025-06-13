@@ -430,42 +430,48 @@ function addProjectCategoryTabs() {
 }
 
 // 프로젝트 리스트 렌더링
-function renderProjects(category = "전체") {
+async function renderProjects(category = "전체") {
   projectList.innerHTML = '';
-  
-  // 필터링된 프로젝트
-  const filteredProjects = category === "전체" ? 
-    projects : 
-    projects.filter(proj => proj.category === category);
-  
+
+  // Supabase에서 프로젝트 목록 불러오기
+  let { data: projects, error } = await supabase
+    .from('projects')
+    .select('*')
+    .order('created_at', { ascending: false });
+
+  if (error) {
+    projectList.innerHTML = '<div>프로젝트 목록을 불러오지 못했습니다.</div>';
+    return;
+  }
+
+  // 카테고리 필터링
+  const filteredProjects = category === "전체"
+    ? projects
+    : projects.filter(proj => proj.category === category);
+
   filteredProjects.forEach(proj => {
     const card = document.createElement('div');
     card.className = 'project-card';
     card.innerHTML = `
       <div class="project-image">
-        <img src="${proj.image}" alt="${proj.name}" onerror="this.src='https://via.placeholder.com/600x400/dddddd/999999?text=${encodeURIComponent(proj.name)}'">
+        <img src="${proj.image || ''}" alt="${proj.title}" onerror="this.src='https://via.placeholder.com/600x400/dddddd/999999?text=${encodeURIComponent(proj.title)}'">
       </div>
       <div class="project-header">
-        <span class="project-title">${proj.name}</span>
-        <span class="project-category">${proj.category}</span>
+        <span class="project-title">${proj.title}</span>
+        <span class="project-category">${proj.category || ''}</span>
       </div>
-      <p class="project-desc">${proj.desc}</p>
+      <p class="project-desc">${proj.description || ''}</p>
       <div class="project-footer">
         <span class="project-label">필요 팀원</span>
         <span class="role-icons">
-          ${proj.roles.map(role => roleIcons[role]).join('')}
+          ${(proj.roles ? JSON.parse(proj.roles) : []).map(role => roleIcons[role] || '').join('')}
         </span>
       </div>
     `;
-    
-    // 각 프로젝트 카드에 클릭 이벤트 추가
     card.addEventListener('click', () => {
       showProjectDetails(proj);
     });
-    
     projectList.appendChild(card);
-    
-    // 카드 스태거드 애니메이션
     setTimeout(() => {
       card.classList.add('show');
     }, 150 * (projectList.children.length - 1));
