@@ -11,7 +11,7 @@ interface ProjectContextType {
   projects: Project[];
   loading: boolean;
   error: string | null;
-  createProject: (data: Omit<Project, 'id' | 'created_at' | 'updated_at'>) => Promise<Project>;
+  createProject: (data: Omit<Project, 'id' | 'created_at' | 'updated_at' | 'owner_id'>) => Promise<Project>;
   updateProject: (id: string, data: Partial<Project>) => Promise<Project>;
   deleteProject: (id: string) => Promise<void>;
   refreshProjects: () => Promise<void>;
@@ -35,25 +35,10 @@ export const ProjectProvider: React.FC<{ children: React.ReactNode }> = ({ child
   const [realtimeChannel, setRealtimeChannel] = useState<RealtimeChannel | null>(null);
 
   const refreshProjects = useCallback(async () => {
-    if (!user) {
-      setProjects([]);
-      return;
-    }
-
     try {
-      const userTeams = await supabase
-        .from('team_members')
-        .select('team_id')
-        .eq('user_id', user.id);
-
-      if (userTeams.error) throw userTeams.error;
-
-      const teamIds = userTeams.data.map(tm => tm.team_id);
-      
       const { data, error } = await supabase
         .from('projects')
         .select('*')
-        .in('team_id', teamIds)
         .order('created_at', { ascending: false });
 
       if (error) throw error;
@@ -62,7 +47,7 @@ export const ProjectProvider: React.FC<{ children: React.ReactNode }> = ({ child
       console.error('Error refreshing projects:', err);
       setError(err instanceof Error ? err.message : 'Failed to refresh projects');
     }
-  }, [user]);
+  }, []);
 
   // 실시간 구독 설정
   useEffect(() => {
@@ -117,9 +102,10 @@ export const ProjectProvider: React.FC<{ children: React.ReactNode }> = ({ child
     initializeData();
   }, [user, refreshProjects]);
 
-  const createProject = async (data: Omit<Project, 'id' | 'created_at' | 'updated_at'>) => {
+  const createProject = async (data: Omit<Project, 'id' | 'created_at' | 'updated_at' | 'owner_id'>) => {
     try {
-      const newProject = await projectService.createProject(data);
+      if (!user) throw new Error('로그인 필요');
+      const newProject = await projectService.createProject(data, user.id);
       await refreshProjects();
       return newProject;
     } catch (err) {

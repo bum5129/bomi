@@ -44,11 +44,11 @@ const initializeRealtimeSubscription = () => {
 };
 
 export const projectService = {
-  async createProject(projectData: ProjectInsert) {
+  async createProject(projectData: ProjectInsert, userId: string) {
     try {
       const { data, error } = await supabase
         .from('projects')
-        .insert(projectData)
+        .insert({ ...projectData, owner_id: userId })
         .select()
         .single();
 
