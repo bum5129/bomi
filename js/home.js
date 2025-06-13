@@ -461,6 +461,8 @@ async function renderProjects(category = "전체", projectsParam = null) {
     : projects.filter(proj => proj.category === category);
 
   filteredProjects.forEach(proj => {
+    // 필수값(title, category)이 없으면 렌더링하지 않음
+    if (!proj.title || !proj.category) return;
     const card = document.createElement('div');
     card.className = 'project-card';
     card.innerHTML = `
