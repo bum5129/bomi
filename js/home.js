@@ -272,6 +272,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // 별빛 효과 생성 함수
 function createStars() {
   const galaxyBg = document.querySelector('.galaxy-bg');
+  if (!galaxyBg) return; // galaxyBg가 없으면 함수 종료
   const starCount = 150;
   
   for (let i = 0; i < starCount; i++) {
