@@ -1,3 +1,8 @@
+// Supabase 클라이언트 초기화 (본인 프로젝트 정보로 교체)
+const supabaseUrl = 'https://skaxflcpzvsdufncihkb.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNrYXhmbGNwenZzZHVmbmNpaGtiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk3MjE5MDksImV4cCI6MjA2NTI5NzkwOX0.uiyKu4N8pAgX6ii6g_4jbxfosHeIWi8JP0Hrfyly7tM';
+const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
 // 역할별 아이콘 정의
 const roleIcons = {
   '기획자': `<div class="role-icon"><i class="fas fa-lightbulb"></i></div>`,
@@ -1099,28 +1104,32 @@ projectForm.addEventListener('submit', function(e) {
 });
 
 // 프로젝트 등록 완료 함수
-function finishProjectRegistration(name, desc, selectedRoles, category, contact, imageData) {
-  // 새 프로젝트 객체 생성
-  const newProject = {
-    name: name,
-    desc: desc,
-    roles: selectedRoles,
-    category: category,
-    contact: contact,
-    image: imageData
-  };
-  
-  // 프로젝트 배열에 추가
-  projects.unshift(newProject);
-  
-  // 성공 메시지 표시
+async function finishProjectRegistration(name, desc, selectedRoles, category, contact, imageData) {
+  // Supabase에 저장
+  const { data, error } = await supabase
+    .from('projects')
+    .insert([{
+      title: name,
+      description: desc,
+      roles: JSON.stringify(selectedRoles), // roles 컬럼이 배열이 아니면 문자열로 저장
+      category: category,
+      contact: contact,
+      image: imageData,
+      status: 'planning',
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
+    }]);
+
+  if (error) {
+    alert('프로젝트 등록 실패: ' + error.message);
+    return;
+  }
+
   alert('프로젝트가 성공적으로 등록되었습니다!');
-  
-  // 폼 초기화
+
+  // 폼 초기화 및 UI 갱신 코드 (기존 코드 유지)
   projectForm.reset();
   otherRoleContainer.classList.add('hidden');
-  
-  // 이미지 미리보기 초기화
   if (imagePreviewContainer) {
     imagePreviewContainer.classList.add('hidden');
   }
@@ -1128,13 +1137,11 @@ function finishProjectRegistration(name, desc, selectedRoles, category, contact,
     fileNameSpan.textContent = '이미지 파일을 선택하세요';
   }
   imageFile = null;
-  
-  // 프로젝트 목록 페이지로 이동 및 새로고침
   registerProjectSection.classList.remove('fade-in');
   setTimeout(() => {
     registerProjectSection.classList.add('hidden');
     projectsSection.classList.remove('hidden');
-    renderProjects(); // 프로젝트 목록 다시 렌더링
+    renderProjects();
     setTimeout(() => {
       projectsSection.classList.add('fade-in');
     }, 100);
